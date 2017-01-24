@@ -19,5 +19,15 @@ class ApiController extends Controller
         echo "<h1>IT WORKS!</h1>";
     }
 
-    //
+    public function create_new_product(){
+
+    }
+
+    public function update_product(){
+
+    }
+
+    public function delete_product(){
+        
+    }
 }

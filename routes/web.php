@@ -17,4 +17,13 @@ $app->get('/', function () use ($app) {
 
 $app->group(['prefix' =>'api'], function() use ($app){
     $app->get('/', 'ApiController@api_root');
+    
+    //products endpoint
+    $app->get('products', 'ApiController@get_all_products');
+    
+    //product (specific) endpoint
+    $app->get('product/{id}',   'ApiController@get_product');
+    $app->put('product',        'ApiController@create_new_product');
+    $app->patch('product',      'ApiController@update_product');
+    $app->delete('product',     'ApiController@delete_product');
 });
