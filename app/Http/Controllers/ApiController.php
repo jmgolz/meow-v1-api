@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-class ExampleController extends Controller
+class ApiController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -12,6 +12,11 @@ class ExampleController extends Controller
     public function __construct()
     {
         //
+        
+    }
+
+    public function api_root(){
+        echo "<h1>IT WORKS!</h1>";
     }
 
     //
