@@ -1,6 +1,8 @@
 <?php
-
 namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+//use Illuminate\Http\Response;
 
 class ApiController extends Controller
 {
@@ -23,11 +25,20 @@ class ApiController extends Controller
 
     }
 
+    public function get_product(Request $request, $id){
+        $mock_products = array(
+            array('name' => 'product one'),
+            array('name' => 'product two')
+        );
+
+        return response()->json($mock_products[$id]);
+    }
+
     public function update_product(){
 
     }
 
     public function delete_product(){
-        
+
     }
 }
