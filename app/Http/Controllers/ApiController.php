@@ -67,6 +67,7 @@ class ApiController extends Controller
     }
 
     public function delete_product(Request $request, $id){
-
+        $result = $this->firebase_client->delete('products/'.$id);
+        return response()->json($result);
     }
 }
