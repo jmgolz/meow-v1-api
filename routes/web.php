@@ -24,6 +24,6 @@ $app->group(['prefix' =>'api'], function() use ($app){
     //product (specific) endpoint
     $app->get('product/{id}',   'ApiController@get_product');
     $app->put('product',        'ApiController@create_new_product');
-    $app->patch('product',      'ApiController@update_product');
-    $app->delete('product',     'ApiController@delete_product');
+    $app->patch('product/{id}',      'ApiController@update_product');
+    $app->delete('product/{id}',     'ApiController@delete_product');
 });

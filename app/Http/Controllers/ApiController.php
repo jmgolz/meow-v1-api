@@ -9,17 +9,15 @@ use Kreait\Firebase\Firebase;
 class ApiController extends Controller
 {
     private $mock_products = array(
-        "products" => array(
-            array(
-                'title' => 'product one',
-                'description' => 'this is product one',
-                'in_stock' => false
-            ),
-            array(
-                'title' => 'product two',
-                'description' => 'this is product TWO',
-                'in_stock' => true
-            )
+        array(
+            'title' => 'product one',
+            'description' => 'this is product one',
+            'in_stock' => false
+        ),
+        array(
+            'title' => 'product two',
+            'description' => 'this is product TWO',
+            'in_stock' => true
         )
     );
     
@@ -33,20 +31,17 @@ class ApiController extends Controller
     public function __construct(){
         $this->firebase_config = new Configuration();
         $this->firebase_config->setAuthConfigFile( base_path('firebase.json') );
-
         $this->firebase_client = new Firebase('https://meow-api.firebaseio.com/', $this->firebase_config);
     }
 
     public function get_all_products(){
-        //return response()->json($this->mock_products);
         $result = $this->firebase_client->get('products');
-        echo "<pre>".print_r($result, true)."</pre>";
-        
-
+        return response()->json($result);
     }
 
     public function get_product(Request $request, $id){
-        return response()->json($this->mock_products['products'][$id]);
+        $result = $this->firebase_client->get('products/'.$id);
+        return response()->json($result);
     }
 
     public function api_root(){
@@ -54,15 +49,24 @@ class ApiController extends Controller
     }
 
     public function create_new_product(){
-
+        $result = $this->firebase_client->set($this->mock_products, 'products');
+        return response()->json($result);
     }
 
-
-    public function update_product(){
-
+    /* Uses Patch HTTP method to make updates.
+     * json merge structure is:
+     * [{ "op": "replace", "path": "/{key to replace}", "value": "Your replacement value here" }]
+     * content type is "application/json-patch+json"
+     */
+    public function update_product(Request $request, $id){
+        $keyToUpdate = ltrim($request->all()[0]['path'],"/");
+        $newValue = $request->all()[0]['value'];
+        
+        $result = $this->firebase_client->update([$keyToUpdate => $newValue], 'products/'.$id );
+        return response()->json($result);
     }
 
-    public function delete_product(){
+    public function delete_product(Request $request, $id){
 
     }
 }
