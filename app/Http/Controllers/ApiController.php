@@ -43,7 +43,7 @@ class ApiController extends Controller
     }
 
     public function get_product(Request $request, $id){
-        return response()->json($this->mock_products[$id]);
+        return response()->json($this->mock_products['products'][$id]);
     }
 
     public function api_root(){
