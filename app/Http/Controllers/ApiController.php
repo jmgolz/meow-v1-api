@@ -32,14 +32,17 @@ class ApiController extends Controller
      */
     public function __construct(){
         $this->firebase_config = new Configuration();
-        $this->firebase_config->setAuthConfigFile(__DIR__.'/../firebase.json');
+        $this->firebase_config->setAuthConfigFile( base_path('firebase.json') );
 
         $this->firebase_client = new Firebase('https://meow-api.firebaseio.com/', $this->firebase_config);
-
     }
 
     public function get_all_products(){
-        return response()->json($this->mock_products);
+        //return response()->json($this->mock_products);
+        $result = $this->firebase_client->get('products');
+        echo "<pre>".print_r($result, true)."</pre>";
+        
+
     }
 
     public function get_product(Request $request, $id){
