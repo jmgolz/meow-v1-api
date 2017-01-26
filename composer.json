@@ -4,12 +4,19 @@
     "keywords": ["framework", "laravel", "lumen"],
     "license": "MIT",
     "type": "project",
+    "repositories": [
+    {
+      "type": "git",
+      "url": "https://github.com/jmgolz/meow-v1-add-swagger.git"
+    }
+  ],
     "require": {
         "php": ">=5.6.4",
         "laravel/lumen-framework": "5.4.*",
         "vlucas/phpdotenv": "~2.2",
         "kreait/firebase-php": "^1.0",
-        "palanik/lumen-cors": "dev-master"
+        "palanik/lumen-cors": "dev-master",
+        "jmgolz/meow-v1-add-swagger": "*@dev"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -32,6 +39,7 @@
             "php -r \"copy('.env.example', '.env');\""
         ]
     },
+    
     "minimum-stability": "dev",
     "prefer-stable": true
 }
