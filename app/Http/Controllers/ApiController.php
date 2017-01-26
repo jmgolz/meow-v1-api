@@ -1,11 +1,11 @@
 <?php
 namespace App\Http\Controllers;
-
+use Laravel\Lumen\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
 use Kreait\Firebase\Configuration;
 use Kreait\Firebase\Firebase;
 
-class ApiController extends Controller
+class ApiController extends BaseController
 {
     private $mock_products = array(
         array(
@@ -44,7 +44,10 @@ class ApiController extends Controller
     }
 
     public function api_root(){
-        echo "<h1>IT WORKS!</h1>";
+        //echo "<h1>IT WORKS!</h1>";
+        $api_instance = new \Swagger\Client\Api\ProductsApi();
+        $result = $api_instance->productsGet();
+        echo "<pre>".print_r($result, true)."</pre>";
     }
 
     public function create_new_product(){
