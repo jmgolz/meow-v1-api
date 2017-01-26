@@ -38,7 +38,7 @@
       if (url && url.length > 1) {
         url = decodeURIComponent(url[1]);
       } else {
-        url = "http://localhost:8000/swagger.json";
+        url = "https://shielded-bastion-92244.herokuapp.com/swagger.json";
       }
 
       hljs.configure({
