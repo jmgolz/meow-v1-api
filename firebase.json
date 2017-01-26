@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "meow-api",
+  "private_key_id": "88510a40b5f06cd23bdf060bb771166bb65663f0",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDIfjGwobDb5XoG\nFJp0mHjybELloHtoS6iCV8gZ3Gr/gluaKhuViBYYUTvJwj8+MlkJbDCgrMgkZS4A\nzvUHW1OcSXxssaEbXih6gPitrO/3RM7eEeNs6kH7fXDR+GGV4OVhqbK4vMGqZjo/\nAvrRrs2OjPjtpz8GMDvrcaoR2y2QWoZh7ah8rbuLxSC19hUWDvqrmezTtr0zRcYb\n5FXmPg6zbmS0qTkt+AAUtsxopJUCedslKti+PO1ldJsg52TnDHJtuXx89HGBqUlX\npbEG9PS87msC8oRnCtiOkEjLVP+Sr3neSlx41Llxlz5MdMSdks1sse1TJl+BpadJ\nq863s2tFAgMBAAECggEALTGtF8jK6janM/mu+3tnQBZBWiu7xb3QRVluRM4X3HLR\nHUZCo4limaauGIPN58JHqcUWjRGFqBaasRn1x+vBRCiYgJPl4hpue3bZF6U1DoMX\nMp3Lq0B/ESasqNgZf0SL0GEFZXk/Gp8ioBOW4G9L7MdAUanynf1/dEpR8OZ8Nd6b\n4iDqye802J4VYhs/e8kuVWjBsyzbTL1z0QFsywOLbTzV8cfa8uxT6LIJxDDuzM91\n3gmopuSDd9oqo5hRl3/SfWQf0LvTpGk7PL6SG5wgqfDgeSV/enCcRkcCZeogtDQ4\nKB21CoNRQ52498HU05Xigag8P3DTCRu1qoClc3A5/QKBgQDoeJyyvwHeyyHNBfcY\nIxC54aCaLSxkg7iGt0GpsIviVttgD5qT9k0wj0IyEo2izLcyw6W3C/s858vdnJek\ngV3mP++ZcUR5R3wZQe/T4Bca/zBlFphvzhOP4ZIOoroPuR9jbUuKLhRD1ryql3K9\nuw+x98+bySIRkVonhmBjKUTxewKBgQDcyQTEIXxm+I9CkC/CPP5SAPCNct+P0OWZ\nHUDjnrh9nuMyI8l5GhT83uQSXqNT6jOqR0rTQZBWzrIJk9s2HZqM2dqj76w4VxDl\nVAu7LxxwFetzzjM33Ok8Lv1ZWhrUtQALIxqzcVZJ/TrzRIeJOcSpMpr+jnyGMIDB\nNeKiDeiaPwKBgGexzSvKGZp4f3ZFb+ebVI2lgA7lkYSwYLHusmJvtqXaWnZp32ia\nl+nOLRfKwNTafekt7hBNTt7nAj+y5s1hSzI2WLjYFlQGt+tIRyL6NTQ8miitQIe2\no3EtjAntOhNjXwXpraVQUofEFFn/vhW1iBW5VSjHOeQeMtmojfwNX4xbAoGBAMkA\n1a790XUpm7t8644J23uq0VXlnDUheLYiFN5ltQ7g5XTTcewn262v+rHiqQ2PrgO7\nLhsQmKj/OsVPcAZfg0HyYIRZglA0q/QsxRVgOaKtwhNHSgf0vf6FxS9gwgae1nBN\nQFTXvThVLCMnY8GB71Ie+U8BR8sfQ0kjlrX0tawfAoGBAIvUc+3UBdvNSxft6uTF\nvJvF0ZDhtJsIx0DGpwOSqjTJJ8rgKqTGLSR2wDI2eJtjGRYkTNCDNZJKajYsg7DF\nh2LOId6l8KtZazBHitqbLCkuF1E4pfBzW6nNs3hrjhVfSe3q2pqCGZ5/mXrOJDyp\nBM5L5QvS15O0Vazias5Rfs1p\n-----END PRIVATE KEY-----\n",
+  "client_email": "meow-api@appspot.gserviceaccount.com",
+  "client_id": "116111364984521116548",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/meow-api%40appspot.gserviceaccount.com"
+}
