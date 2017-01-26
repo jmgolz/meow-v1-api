@@ -4,3 +4,4 @@ Homestead.json
 Homestead.yaml
 .env
 firebase.json
+.DS_Store
