@@ -7,7 +7,7 @@
     "repositories": [
     {
       "type": "git",
-      "url": "https://github.com/jmgolz/meow-v1-add-swagger.git"
+      "url": "git@github.com:jmgolz/meow-v1-add-swagger.git"
     }
   ],
     "require": {
