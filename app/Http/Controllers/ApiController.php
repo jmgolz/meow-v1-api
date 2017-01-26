@@ -1,6 +1,5 @@
 <?php
 namespace App\Http\Controllers;
-putenv('GOOGLE_APPLICATION_CREDENTIALS='.__DIR__.'/../firebase.json');
 
 use Illuminate\Http\Request;
 use Kreait\Firebase\Configuration;
