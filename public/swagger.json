@@ -5,9 +5,11 @@
         "description": "Make your app faster than the reflexes of a cat by leveraging the Meow API!",
         "version": "1.0.0"
     },
-    "host": "shielded-bastion-92244.herokuapp.com",
+    //"host": "shielded-bastion-92244.herokuapp.com",
+    "host": "localhost:8000",
     "schemes": [
-        "https"
+        "https",
+        "http"
     ],
     "basePath": "/api",
     "produces": [
@@ -43,8 +45,8 @@
         },
         "/product/{id}": {
             "get": {
-                "summary": "Get all products",
-                "description": "Returns JSON object with all products carried by Time is Meow®",
+                "summary": "Get individual product info",
+                "description": "Returns JSON object with info for the requested product (by id)",
                 "parameters": [
                     {
                         "name": "id",
@@ -74,14 +76,53 @@
                         }
                     }
                 }
+            },
+            "delete": {
+                "summary": "Delete product",
+                "description": "Returns empty JSON object, HTTP 200 on successful delete",
+                "tags": [
+                    "Product"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data initially sent to API endpoint",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Product"
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
             }
         },
         "/product": {
             "put": {
-                "summary": "Get all products",
+                "summary": "Add new product",
                 "description": "Returns JSON object with all products carried by Time is Meow®",
                 "tags": [
                     "Product"
+                ],
+                "consumes":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "name": "content",
+                        "in": "body",
+                        "description": "title of product",
+                        "required": true,
+                        "type": "string",
+                        "schema": {
+                            "$ref": "#/definitions/Product"
+                        }
+                    }
                 ],
                 "responses": {
                     "200": {
@@ -102,11 +143,40 @@
                 }
             },
             "patch": {
-                "summary": "Get all products",
-                "description": "Returns JSON object with all products carried by Time is Meow®",
+                "summary": "Update product info",
+                "description": "Returns JSON object with the updated product information",
                 "tags": [
                     "Product"
                 ],
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "name": "product_id",
+                        "in": "body",
+                        "description": "product id for editing",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "key",
+                        "in": "body",
+                        "description": "key of value to change",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "value",
+                        "in": "body",
+                        "description": "Value to change",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+
+                
                 "responses": {
                     "200": {
                         "description": "Data initially sent to API endpoint",
@@ -124,31 +194,7 @@
                         }
                     }
                 }
-            },
-            "delete": {
-                "summary": "Get all products",
-                "description": "Returns JSON object with all products carried by Time is Meow®",
-                "tags": [
-                    "Product"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Data initially sent to API endpoint",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/Product"
-                            }
-                        }
-                    },
-                    "default": {
-                        "description": "Unexpected error",
-                        "schema": {
-                            "$ref": "#/definitions/Error"
-                        }
-                    }
-                }
-            }
+            }            
         }
     },
     "definitions": {
@@ -167,7 +213,13 @@
                     "type": "boolean",
                     "description": "True/False flag for if a product is in stock"
                 }
-            }
+            },
+            "example": {
+                "title": "Some watch thing",
+                "in_stock": true,
+                "description": "this owns"
+            },
+            "required":["description", "title", "in_stock"]
         },
         "Error": {
             "type": "object",

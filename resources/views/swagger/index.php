@@ -38,7 +38,8 @@
       if (url && url.length > 1) {
         url = decodeURIComponent(url[1]);
       } else {
-        url = "https://shielded-bastion-92244.herokuapp.com/swagger.json";
+        //url = "https://shielded-bastion-92244.herokuapp.com/swagger.json";
+        url = "http://localhost:8000/swagger.json";
       }
 
       hljs.configure({
@@ -73,10 +74,10 @@
           log("Unable to Load SwaggerUI");
         },
         docExpansion: "list",
-        jsonEditor: false,
+        jsonEditor: true,
         defaultModelRendering: 'schema',
-        showRequestHeaders: false,
-        showOperationIds: false
+        showRequestHeaders: true,
+        showOperationIds: true
       });
 
       window.swaggerUi.load();
