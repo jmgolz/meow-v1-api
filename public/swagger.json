@@ -83,16 +83,19 @@
                 "tags": [
                     "Product"
                 ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of product to delete",
+                        "required": true,
+                        "type": "number"
+                    }
+                ],
+            "example":{
+                "id" : "-KbS_SquaqDVuX4sd3mI"
+            },
                 "responses": {
-                    "200": {
-                        "description": "Data initially sent to API endpoint",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/Product"
-                            }
-                        }
-                    },
                     "default": {
                         "description": "Unexpected error",
                         "schema": {
@@ -126,11 +129,11 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Data initially sent to API endpoint",
+                        "description": "Data returned after successful put.",
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/Product"
+                                "$ref": "#/definitions/PutOperationResponse"
                             }
                         }
                     },
@@ -153,33 +156,21 @@
                 ],
                 "parameters":[
                     {
-                        "name": "product_id",
+                        "name": "content",
                         "in": "body",
-                        "description": "product id for editing",
+                        "description": "title of product",
                         "required": true,
-                        "type": "integer",
-                        "format": "int32"
-                    },
-                    {
-                        "name": "key",
-                        "in": "body",
-                        "description": "key of value to change",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "value",
-                        "in": "body",
-                        "description": "Value to change",
-                        "required": true,
-                        "type": "string"
+                        "type": "string",
+                        "schema": {
+                            "$ref": "#/definitions/PatchOperation"
+                        }
                     }
                 ],
 
                 
                 "responses": {
                     "200": {
-                        "description": "Data initially sent to API endpoint",
+                        "description": "JSON object with the updated field",
                         "schema": {
                             "type": "array",
                             "items": {
@@ -220,6 +211,33 @@
                 "description": "this owns"
             },
             "required":["description", "title", "in_stock"]
+        },
+        "PatchOperation": {
+            "type": "object",
+            "properties": {
+                "product_id": {
+                    "type": "string",
+                    "description": "Firebase DB generated ID for the product entry"
+                },
+                "key": {
+                    "type": "string",
+                    "description": "Field being edited"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "True/False flag for if a product is in stock"
+                }
+            },
+            "example": {
+                "product_id": "-KbS_SquaqDVuX4sd3mI",
+                "key": "in_stock",
+                "value": "false"
+            },
+            "required":["product_id", "key", "value"]
+        },
+        "PutOperationResponse":{
+            "type":"string",
+            "example":"-KbS_SquaqDVuX4sd3mI"
         },
         "Error": {
             "type": "object",
