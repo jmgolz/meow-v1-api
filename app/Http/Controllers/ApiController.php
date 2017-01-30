@@ -8,16 +8,18 @@ use Kreait\Firebase\Firebase;
 class ApiController extends BaseController
 {
     private $mock_products = array(
-        array(
-            'title' => 'product one',
-            'description' => 'this is product one',
-            'in_stock' => false
-        ),
-        array(
-            'title' => 'product two',
-            'description' => 'this is product TWO',
-            'in_stock' => true
-        )
+            array(
+                'title' => 'product one',
+                'description' => 'this is product one',
+                'in_stock' => false,
+                'product_code' => 1024
+            ),
+            array(
+                'title' => 'product two',
+                'description' => 'this is product TWO',
+                'in_stock' => true,
+                'product_code' => 3412
+            )
     );
     
     private $firebase_client;
@@ -50,8 +52,8 @@ class ApiController extends BaseController
         echo "<pre>".print_r($result, true)."</pre>";
     }
 
-    public function create_new_product(){
-        $result = $this->firebase_client->set($this->mock_products, 'products');
+    public function create_new_product(Request $request){
+        $result = $this->firebase_client->push($request->all(), 'products');
         return response()->json($result);
     }
 
@@ -60,12 +62,16 @@ class ApiController extends BaseController
      * [{ "op": "replace", "path": "/{key to replace}", "value": "Your replacement value here" }]
      * content type is "application/json-patch+json"
      */
-    public function update_product(Request $request, $id){
-        $keyToUpdate = ltrim($request->all()[0]['path'],"/");
-        $newValue = $request->all()[0]['value'];
+    public function update_product(Request $request){
+        // $keyToUpdate = ltrim($request->all()[0]['path'],"/");
+        // $newValue = $request->all()[0]['value'];
         
-        $result = $this->firebase_client->update([$keyToUpdate => $newValue], 'products/'.$id );
-        return response()->json($result);
+        //$result = $this->firebase_client->update([$keyToUpdate => $newValue], 'products/'.$id );
+        //return response()->json($result);
+        return response()->json($request->all());
+        // echo "<pre>".print_r($request->all(), true)."</pre>";
+
+
     }
 
     public function delete_product(Request $request, $id){
