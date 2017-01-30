@@ -6,10 +6,9 @@
         "version": "1.0.0"
     },
     "host": "shielded-bastion-92244.herokuapp.com",
-    //"host": "localhost:8000",
+    // "host": "localhost:8000",
     "schemes": [
-        "https",
-        "http"
+        "https"
     ],
     "basePath": "/api",
     "produces": [
