@@ -5,8 +5,8 @@
         "description": "Make your app faster than the reflexes of a cat by leveraging the Meow API!",
         "version": "1.0.0"
     },
-    // "host": "meow-api.herokuapp.com",
-    "host": "localhost:8000",
+    "host": "meow-api.herokuapp.com",
+    // "host": "localhost:8000",
     "schemes": [
         "https",
         "http"
