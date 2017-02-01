@@ -5,10 +5,10 @@
         "description": "Make your app faster than the reflexes of a cat by leveraging the Meow API!",
         "version": "1.0.0"
     },
-    "host": "shielded-bastion-92244.herokuapp.com",
-    // "host": "localhost:8000",
+    "host": "meow-api.herokuapp.com",
     "schemes": [
-        "https"
+        "https",
+        "http"
     ],
     "basePath": "/api",
     "produces": [
