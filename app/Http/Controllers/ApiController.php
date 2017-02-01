@@ -46,20 +46,11 @@ class ApiController extends BaseController
     }
 
     /* Uses Patch HTTP method to make updates.
-     * json merge structure is:
-     * [{ "op": "replace", "path": "/{key to replace}", "value": "Your replacement value here" }]
      * content type is "application/json-patch+json"
      */
     public function update_product(Request $request){
-        // $keyToUpdate = ltrim($request->all()[0]['path'],"/");
-        // $newValue = $request->all()[0]['value'];
-        
-        //$result = $this->firebase_client->update([$keyToUpdate => $newValue], 'products/'.$id );
-        //return response()->json($result);
-        return response()->json($request->all());
-        // echo "<pre>".print_r($request->all(), true)."</pre>";
-
-
+        $result = $this->firebase_client->update([$request->all()['key'] => $request->all()['value']], $this->db.'/'.$request->all()['product_id']);
+        return response()->json($result);
     }
 
     public function delete_product(Request $request, $id){
