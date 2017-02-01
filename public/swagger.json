@@ -5,10 +5,11 @@
         "description": "Make your app faster than the reflexes of a cat by leveraging the Meow API!",
         "version": "1.0.0"
     },
-    "host": "meow-api.herokuapp.com",
-    // "host": "localhost:8000",
+    // "host": "meow-api.herokuapp.com",
+    "host": "localhost:8000",
     "schemes": [
-        "https"
+        "https",
+        "http"
     ],
     "basePath": "/api",
     "produces": [
@@ -40,9 +41,90 @@
                         }
                     }
                 }
+            },
+
+            "put": {
+                "summary": "Add new product",
+                "description": "Returns JSON object with all products carried by Time is Meow®",
+                "tags": [
+                    "Product"
+                ],
+                "consumes":[
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "name": "content",
+                        "in": "body",
+                        "description": "title of product",
+                        "required": true,
+                        "type": "string",
+                        "schema": {
+                            "$ref": "#/definitions/Product"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data returned after successful put.",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/PutOperationResponse"
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+
+            "patch": {
+                "summary": "Update product info",
+                "description": "Returns JSON object with the updated product information",
+                "tags": [
+                    "Product"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "name": "content",
+                        "in": "body",
+                        "description": "title of product",
+                        "required": true,
+                        "type": "string",
+                        "schema": {
+                            "$ref": "#/definitions/PatchOperation"
+                        }
+                    }
+                ],
+                
+                "responses": {
+                    "200": {
+                        "description": "JSON object with the updated field",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Product"
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
             }
         },
-        "/product/{id}": {
+        "/products/{id}": {
             "get": {
                 "summary": "Get individual product info",
                 "description": "Returns JSON object with info for the requested product (by id)",
@@ -88,7 +170,7 @@
                         "in": "path",
                         "description": "ID of product to delete",
                         "required": true,
-                        "type": "number"
+                        "type": "string"
                     }
                 ],
             "example":{
@@ -103,88 +185,6 @@
                     }
                 }
             }
-        },
-        "/product": {
-            "put": {
-                "summary": "Add new product",
-                "description": "Returns JSON object with all products carried by Time is Meow®",
-                "tags": [
-                    "Product"
-                ],
-                "consumes":[
-                    "application/json"
-                ],
-                "parameters":[
-                    {
-                        "name": "content",
-                        "in": "body",
-                        "description": "title of product",
-                        "required": true,
-                        "type": "string",
-                        "schema": {
-                            "$ref": "#/definitions/Product"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Data returned after successful put.",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/PutOperationResponse"
-                            }
-                        }
-                    },
-                    "default": {
-                        "description": "Unexpected error",
-                        "schema": {
-                            "$ref": "#/definitions/Error"
-                        }
-                    }
-                }
-            },
-            "patch": {
-                "summary": "Update product info",
-                "description": "Returns JSON object with the updated product information",
-                "tags": [
-                    "Product"
-                ],
-                "consumes": [
-                    "application/json"
-                ],
-                "parameters":[
-                    {
-                        "name": "content",
-                        "in": "body",
-                        "description": "title of product",
-                        "required": true,
-                        "type": "string",
-                        "schema": {
-                            "$ref": "#/definitions/PatchOperation"
-                        }
-                    }
-                ],
-
-                
-                "responses": {
-                    "200": {
-                        "description": "JSON object with the updated field",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/Product"
-                            }
-                        }
-                    },
-                    "default": {
-                        "description": "Unexpected error",
-                        "schema": {
-                            "$ref": "#/definitions/Error"
-                        }
-                    }
-                }
-            }            
         }
     },
     "definitions": {
