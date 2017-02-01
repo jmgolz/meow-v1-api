@@ -12,12 +12,13 @@
 */
 
 $app->get('/', function () use ($app) {
-    return $app->version();
+    // return $app->version();
+    return view('swagger/index');
 });
 
-$app->get('/swagger', function() { return view('swagger/index'); });
+// $app->get('swagger', function() { return view('swagger/index'); });
 
-$app->group(['prefix' =>'/api'], function() use ($app){
+$app->group(['prefix' =>'api'], function() use ($app){
     //Root api endpoint
     $app->get('/', 'ApiController@api_root');
     

@@ -8,8 +8,7 @@
     "host": "meow-api.herokuapp.com",
     // "host": "localhost:8000",
     "schemes": [
-        "https",
-        "http"
+        "https"
     ],
     "basePath": "/api",
     "produces": [
